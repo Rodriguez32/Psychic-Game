@@ -17,6 +17,7 @@
 <h3>You guess: <div id="userGuess"></div></h3>
 <h3>Wins: <div id="wins"></div></h3>
 <h3>Losses: <div id="losses"></div></p>
+<button id="clear">clear</button>
 
 <script type="text/javascript">
 
@@ -63,6 +64,11 @@ $(document).ready(function(){
 
 });
 
+$('#clear').click(function() {
+        $('#userGuess').empty();
+        $('#wins').empty();
+        $('#losses').empty();
+      });
 
 </script>
 
