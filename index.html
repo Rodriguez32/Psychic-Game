@@ -31,24 +31,33 @@ $(document).ready(function(){
     // Keep score of wins and losses //
     var wins = 0;
     var losses = 0;
-     
-    // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
-    var userGuess = event.key.toLowerCase();
+    var guessArray = [];
+    var userGuess = "";
    
     
    //When user guesses increase and update wins or losses 
-    $document.on("keypress",function(event){
+    document.addEventListener("keydown",function(e){
+
+        userGuess = event.key.toLowerCase();
+        guessArray.push(userGuess);
+        console.log(userGuess);
+        console.log(guessArray);
+
+    $("#userGuess").text(guessArray.toString());    
+
         if(event.key===cGuess){
             wins++
             $("#wins").text(wins);
-            $("userGuess").text(event.key);
-            cGuess=computerChoices[Math.floor(Math.random()*computerChoices.length)];
-            console.log(cGuess);
+            
+            
+    cGuess=computerChoices[Math.floor(Math.random()*computerChoices.length)];
+    console.log(cGuess);
         }
         else {
             losses++
             $("#losses").text(losses);
-            $("userGuess").text(event.key);
+    
+    $("userGuess").text(guessArray.toString());
         }
     })
 
