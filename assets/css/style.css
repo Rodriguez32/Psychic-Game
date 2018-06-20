@@ -1,0 +1,11 @@
+/*    Some styling    */
+
+h1 {
+    text-align: center;
+    color: blue
+}
+
+.patterned-background {
+    background-image: url(../images/symphony.png)
+}
+

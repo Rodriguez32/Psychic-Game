@@ -4,73 +4,55 @@
 <head>
     <meta charset="utf-8">
     <title>Psychic Game</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="patterned-background">
 
 <h1>The Psychic Game</h1>
 <h2>Guess what letter I'm thinking of</h2>
 
-<p id="game"></p>
-
+<h3>You guess: <div id="userGuess"></div></h3>
+<h3>Wins: <div id="wins"></div></h3>
+<h3>Losses: <div id="losses"></div></p>
 
 <script type="text/javascript">
 
 $(document).ready(function(){ 
     
     var computerChoices = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-});
-    
-    
+
+  // Computer will choose a letter randomly
+    var cGuess=computerChoices[Math.floor(Math.random()*computerChoices.length)];
+    console.log(cGuess);
+
     // Keep score of wins and losses //
     var wins = 0;
     var losses = 0;
-    var guessesleft = 11;
-    
-    var userInput = [];
-
+     
     // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
     var userGuess = event.key.toLowerCase();
-
-    var userGuess = e.key;
-
-    // Functions
-    function updateWins() {
-      document.querySelector("#game").innerHTML = "Game: " + wins;
-    }
-
-    function updateLosses() {
-      document.querySelector("#game").innerHTML = "Game: " + losses;
-    }
-
-    // Computer will choose a letter randomly
-    var cGuess = computerChoices[Math.floor(Math.random()*computerChoices.lenght -1)];
-    console.log(cGuess);
-
+   
+    
    //When user guesses increase and update wins or losses 
-    $document.on("keypress",function(e){
-        if(e.key === computerChoices){
-            wins++;
-            updateWins();
+    $document.on("keypress",function(event){
+        if(event.key===cGuess){
+            wins++
+            $("#wins").text(wins);
+            $("userGuess").text(event.key);
+            cGuess=computerChoices[Math.floor(Math.random()*computerChoices.length)];
+            console.log(cGuess);
         }
         else {
             losses++
-            updateLosses();
+            $("#losses").text(losses);
+            $("userGuess").text(event.key);
         }
-    });
+    })
 
-    console.log(keypress)
-
-
-
-
-
-
-
-
+});
 
 
 </script>
